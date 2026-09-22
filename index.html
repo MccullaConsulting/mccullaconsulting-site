@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>McCulla Consulting — Power BI, Salesforce &amp; Data Systems</title>
+<meta name="description" content="McCulla Consulting helps businesses connect Salesforce, Snowflake and Power BI into one clear picture — and automate the parts that shouldn't take a human.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16242E;
+    --paper:#EFEDE3;
+    --paper-2:#E5E2D4;
+    --line:#C7C2AF;
+    --blue:#3E6E8E;
+    --brass:#A8752F;
+    --muted:#5C6A72;
+    --max:1080px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', -apple-system, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.55;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', Georgia, serif;
+    font-weight:500;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
+
+  header{
+    padding:28px 0;
+    border-bottom:1px solid var(--line);
+  }
+  header .wrap{display:flex; align-items:center; justify-content:space-between;}
+  .mark{
+    font-family:'Fraunces', serif;
+    font-size:1.15rem;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  .mark span{color:var(--blue);}
+  header a.cta{
+    font-size:0.92rem;
+    text-decoration:none;
+    color:var(--ink);
+    border-bottom:1px solid var(--ink);
+    padding-bottom:2px;
+    white-space:nowrap;
+  }
+  header a.cta:hover{color:var(--blue); border-color:var(--blue);}
+
+  /* HERO */
+  .hero{padding:88px 0 96px;}
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem, 4vw, 3.15rem);
+    line-height:1.12;
+    max-width:11ch;
+  }
+  .hero p.lede{
+    margin-top:22px;
+    max-width:46ch;
+    font-size:1.08rem;
+    color:var(--muted);
+  }
+  .hero .actions{margin-top:34px; display:flex; gap:20px; align-items:center; flex-wrap:wrap;}
+  .btn-primary{
+    display:inline-block;
+    background:var(--ink);
+    color:var(--paper);
+    text-decoration:none;
+    padding:13px 24px;
+    font-size:0.95rem;
+    font-weight:500;
+    border-radius:2px;
+  }
+  .btn-primary:hover{background:var(--blue);}
+  .btn-secondary{
+    text-decoration:none;
+    color:var(--muted);
+    font-size:0.92rem;
+    border-bottom:1px solid var(--line);
+  }
+
+  /* diagram */
+  .diagram{width:100%; height:auto;}
+  .diagram .node-label{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:12.5px;
+    fill:var(--ink);
+    font-weight:500;
+  }
+  .diagram .node-box{
+    fill:var(--paper);
+    stroke:var(--ink);
+    stroke-width:1.2;
+  }
+  .diagram .node-box.result{
+    fill:var(--ink);
+  }
+  .diagram .result-label{ fill:var(--paper); }
+  .diagram .edge{
+    fill:none;
+    stroke:var(--line);
+    stroke-width:1.4;
+  }
+  .diagram .pulse{
+    fill:var(--brass);
+  }
+
+  /* SERVICES */
+  .services{padding:88px 0; border-top:1px solid var(--line);}
+  .services .head{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:56px;
+    margin-bottom:52px;
+  }
+  .services .head h2{font-size:1.9rem; max-width:14ch;}
+  .services .head p{color:var(--muted); max-width:42ch; margin-top:16px;}
+
+  .service-row{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:40px;
+    padding:30px 0;
+    border-top:1px solid var(--line);
+  }
+  .service-row:last-child{border-bottom:1px solid var(--line);}
+  .service-row h3{font-size:1.3rem; font-weight:500;}
+  .service-row p{margin:12px 0 0; color:var(--muted); max-width:56ch;}
+  .service-row .tag{
+    font-size:0.82rem;
+    color:var(--blue);
+    display:block;
+    margin-top:4px;
+  }
+
+  /* ABOUT */
+  .about{padding:88px 0; border-top:1px solid var(--line); background:var(--paper-2);}
+  .about .wrap{max-width:720px;}
+  .about h2{font-size:1.9rem; margin-bottom:24px;}
+  .about p{font-size:1.08rem; color:var(--ink);}
+  .about p + p{margin-top:18px;}
+  .about .stack{
+    margin-top:30px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 14px;
+    font-size:0.9rem;
+    color:var(--muted);
+  }
+  .about .stack span{
+    padding:5px 12px;
+    border:1px solid var(--line);
+    border-radius:2px;
+  }
+
+  /* CONTACT */
+  .contact{padding:100px 0 110px; border-top:1px solid var(--line);}
+  .contact .wrap{text-align:left;}
+  .contact h2{font-size:clamp(1.8rem, 3.4vw, 2.6rem); max-width:16ch;}
+  .contact p{color:var(--muted); margin-top:16px; max-width:48ch; font-size:1.05rem;}
+  .contact .email-link{
+    margin-top:36px;
+    display:inline-flex;
+    align-items:baseline;
+    gap:10px;
+    font-family:'Fraunces', serif;
+    font-size:clamp(1.3rem, 2.6vw, 1.9rem);
+    text-decoration:none;
+    color:var(--ink);
+    border-bottom:1.5px solid var(--brass);
+    padding-bottom:4px;
+  }
+  .contact .email-link:hover{color:var(--blue); border-color:var(--blue);}
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:26px 0;
+    font-size:0.85rem;
+    color:var(--muted);
+  }
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+
+  @media (max-width:760px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero{padding:56px 0 64px;}
+    .services .head{grid-template-columns:1fr;}
+    .service-row{grid-template-columns:1fr; gap:8px;}
+    .wrap{padding:0 22px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .pulse{ animation:none !important; opacity:0 !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="mark">McCulla <span>Consulting</span></div>
+    <a class="cta" href="mailto:cmcculla@mccullaconsulting.com">cmcculla@mccullaconsulting.com</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Your data, finally talking to itself.</h1>
+      <p class="lede">Epicor, Salesforce, Snowflake and Power BI, built and connected by one person who understands all of them — so your team gets one clear number instead of a handful of conflicting ones.</p>
+      <div class="actions">
+        <a class="btn-primary" href="mailto:cmcculla@mccullaconsulting.com">Get in touch</a>
+        <a class="btn-secondary" href="#services">See what I do</a>
+      </div>
+    </div>
+
+    <svg class="diagram" viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing Epicor, Salesforce, Snowflake and Python data feeding into a Power BI report that produces a decision">
+      <!-- edges -->
+      <path class="edge" d="M 70 64 C 120 90, 160 120, 195 146" />
+      <path class="edge" d="M 183 64 C 195 100, 210 120, 225 146" />
+      <path class="edge" d="M 296 64 C 280 100, 265 120, 255 146" />
+      <path class="edge" d="M 409 64 C 360 90, 320 120, 285 146" />
+      <path class="edge" d="M 240 180 C 240 200, 240 205, 240 226" />
+
+      <!-- source nodes -->
+      <rect class="node-box" x="20" y="30" width="100" height="34" rx="2"/>
+      <text class="node-label" x="70" y="51" text-anchor="middle">Epicor</text>
+
+      <rect class="node-box" x="133" y="30" width="100" height="34" rx="2"/>
+      <text class="node-label" x="183" y="51" text-anchor="middle">Salesforce</text>
+
+      <rect class="node-box" x="246" y="30" width="100" height="34" rx="2"/>
+      <text class="node-label" x="296" y="51" text-anchor="middle">Snowflake</text>
+
+      <rect class="node-box" x="359" y="30" width="100" height="34" rx="2"/>
+      <text class="node-label" x="409" y="51" text-anchor="middle">Python</text>
+
+      <!-- Power BI node -->
+      <rect class="node-box" x="170" y="146" width="140" height="34" rx="2"/>
+      <text class="node-label" x="240" y="167" text-anchor="middle">Power BI</text>
+
+      <!-- result node -->
+      <rect class="node-box result" x="175" y="226" width="130" height="38" rx="2"/>
+      <text class="node-label result-label" x="240" y="249" text-anchor="middle">A decision you can act on</text>
+
+      <!-- traveling pulses -->
+      <circle class="pulse" r="3.4">
+        <animateMotion dur="3.4s" begin="0.2s" repeatCount="indefinite" path="M 70 64 C 120 90, 160 120, 195 146" />
+        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.85;1" dur="3.4s" begin="0.2s" repeatCount="indefinite"/>
+      </circle>
+      <circle class="pulse" r="3.4">
+        <animateMotion dur="3.4s" begin="0.75s" repeatCount="indefinite" path="M 183 64 C 195 100, 210 120, 225 146" />
+        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.85;1" dur="3.4s" begin="0.75s" repeatCount="indefinite"/>
+      </circle>
+      <circle class="pulse" r="3.4">
+        <animateMotion dur="3.4s" begin="1.3s" repeatCount="indefinite" path="M 296 64 C 280 100, 265 120, 255 146" />
+        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.85;1" dur="3.4s" begin="1.3s" repeatCount="indefinite"/>
+      </circle>
+      <circle class="pulse" r="3.4">
+        <animateMotion dur="3.4s" begin="1.9s" repeatCount="indefinite" path="M 409 64 C 360 90, 320 120, 285 146" />
+        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.85;1" dur="3.4s" begin="1.9s" repeatCount="indefinite"/>
+      </circle>
+      <circle class="pulse" r="3.4">
+        <animateMotion dur="1.4s" begin="2.8s" repeatCount="indefinite" path="M 240 180 C 240 200, 240 205, 240 226" />
+        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.8;1" dur="1.4s" begin="2.8s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="head">
+      <h2>Four systems. One person who speaks all of them.</h2>
+      <p>Most shops hire a Power BI person, a Salesforce admin, an Epicor consultant, and hope someone in IT knows Python. I do all of it, which means the handoffs — where projects usually stall — don't exist.</p>
+    </div>
+
+    <div class="service-row">
+      <div><span class="tag">Reporting</span></div>
+      <div>
+        <h3>Power BI</h3>
+        <p>Data models, DAX measures, and dashboards that reconcile cleanly against the numbers finance already trusts — built to be handed off and maintained, not just delivered and forgotten.</p>
+      </div>
+    </div>
+
+    <div class="service-row">
+      <div><span class="tag">CRM</span></div>
+      <div>
+        <h3>Salesforce</h3>
+        <p>Configuration, automation, and cleanup for orgs that have grown past their original setup — so the data coming out is actually the data you can report on.</p>
+      </div>
+    </div>
+
+    <div class="service-row">
+      <div><span class="tag">ERP</span></div>
+      <div>
+        <h3>Epicor</h3>
+        <p>Configuration and reporting support for Epicor environments — getting production, inventory, and financial data out in a form the rest of the business can actually use.</p>
+      </div>
+    </div>
+
+    <div class="service-row">
+      <div><span class="tag">Data &amp; automation</span></div>
+      <div>
+        <h3>Snowflake &amp; Python</h3>
+        <p>Warehousing, transformation, and scripts that move data between systems automatically — replacing the export-and-email-a-spreadsheet routine with something that just runs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap">
+    <h2>About</h2>
+    <p>McCulla Consulting is an independent practice built around a simple idea: the tools your business runs on should agree with each other. That means one person following the data from where it's entered to where it's read — not three specialists translating across a gap.</p>
+    <p>Work is scoped to fit the problem, whether that's a single dashboard rebuild or the ongoing plumbing behind it.</p>
+    <div class="stack">
+      <span>Power BI</span>
+      <span>DAX</span>
+      <span>Salesforce</span>
+      <span>Epicor</span>
+      <span>Snowflake</span>
+      <span>Python</span>
+      <span>SQL</span>
+    </div>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="wrap">
+    <h2>Have a system that isn't talking to your other systems?</h2>
+    <p>Tell me what you're working with and what you're trying to get out of it. I'll tell you honestly whether it's a quick fix or a bigger project.</p>
+    <a class="email-link" href="mailto:cmcculla@mccullaconsulting.com">cmcculla@mccullaconsulting.com &#8594;</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>McCulla Consulting</span>
+    <span>Power BI · Salesforce · Epicor · Snowflake · Python</span>
+  </div>
+</footer>
+
+</body>
+</html>
